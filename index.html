@@ -6,41 +6,81 @@
   <title>Payment Confirmation</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f3f4f6;
-      text-align: center;
-      padding: 50px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-    .container {
+    .card {
       background: white;
-      padding: 40px;
-      border-radius: 12px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      max-width: 480px;
+      text-align: center;
+    }
+    .checkmark {
+      font-size: 64px;
+      color: #10b981;
+      margin-bottom: 20px;
     }
     h1 {
       color: #10b981;
+      margin-bottom: 10px;
     }
     p {
-      font-size: 18px;
-      color: #555;
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .opp-id {
+      background: #f9fafb;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #333;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #1e40af;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>✅ Payment Successful!</h1>
-    <p>Thank you for your payment. Your booking has been confirmed.</p>
-    <p><strong>Reference:</strong> <span id="oppId">Loading...</span></p>
+  <div class="card">
+    <div class="checkmark">✅</div>
+    <h1>Payment Successful!</h1>
+    <p>Thank you. Your booking is confirmed.</p>
+    <p class="opp-id" id="oppId">Loading...</p>
+    <a href="https://mandidube.github.io/" class="btn">Return to Home</a>
   </div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const oppId = urlParams.get('opportunityId');
     if (oppId) {
-      document.getElementById('oppId').textContent = oppId;
+      document.getElementById('oppId').textContent = 'Ref: ' + oppId;
+    } else {
+      document.getElementById('oppId').textContent = 'Ref: Not Found';
     }
   </script>
 </body>
 </html>
+
